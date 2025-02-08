@@ -5,7 +5,7 @@ from preprocessing import preprocess_text  # Ensure preprocess_text is imported
 
 # Loading models (Word2Vec, SVM model, and MLP model)
 def load_models():
-    word2vec_model = Word2Vec.load('word2vec_model.model')  
+    word2vec_model = Word2Vec.load(r'/workspaces/Project_WoC_7.0_Fake_Review_Detection_Chechpoint_4/word2vec_model.model')  
     svm_model = joblib.load('SVM_model.pkl')  # SVM model
     mlp_model = joblib.load('MLP_model.pkl')  # MLP model
     return word2vec_model, svm_model, mlp_model
