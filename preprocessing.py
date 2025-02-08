@@ -9,8 +9,6 @@ from nltk.tokenize import word_tokenize
 import nltk
 nltk.download('punkt')
 
-
-
 # Initialize Lemmatizer and Stemmer
 lemmatizer = WordNetLemmatizer()
 stemmer = PorterStemmer()
