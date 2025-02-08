@@ -5,11 +5,10 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.tokenize import word_tokenize
 
-try:
-    import nltk
-    nltk.download('punkt')
-except Exception as e:
-    print(f"Error downloading 'punkt': {e}")
+
+import nltk
+nltk.download('punkt')
+
 
 
 # Initialize Lemmatizer and Stemmer
