@@ -5,7 +5,9 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.tokenize import word_tokenize
 
-nltk.download('punkt', download_dir='/usr/local/share/nltk_data')
+import nltk
+nltk.download('punkt')
+
 
 # Initialize Lemmatizer and Stemmer
 lemmatizer = WordNetLemmatizer()
