@@ -4,8 +4,8 @@ from textblob import TextBlob
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.tokenize import word_tokenize
-import nltk
-nltk.download('punkt')
+
+nltk.download('punkt', download_dir='/usr/local/share/nltk_data')
 
 # Initialize Lemmatizer and Stemmer
 lemmatizer = WordNetLemmatizer()
