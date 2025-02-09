@@ -11,9 +11,6 @@ word2vec_model, mlp_model, svm_model = load_models()
 # Streamlit UI
 st.title("🛒 Product Review Fake or Real Classifier")
 
-# Optional file uploader to load models (if you want users to upload their own models)
-# svm_model = st.file_uploader("Upload SVM Model", type=["pkl"])
-# word2vec_model = st.file_uploader("Upload Word2Vec Model", type=["model"])
 
 # Dropdown menu to select model
 model_choice = st.selectbox(
