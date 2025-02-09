@@ -1,17 +1,14 @@
 import re
 import emoji
 from textblob import TextBlob
-import spacy
-from spacy.cli import download
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer, PorterStemmer
+from nltk.tokenize import word_tokenize
 
-try:
-    nlp = spacy.load('en_core_web_sm')
-except OSError:
-    download('en_core_web_sm')
-    nlp = spacy.load('en_core_web_sm')
+lemmatizer = WordNetLemmatizer()
+stemmer = PorterStemmer()
 
-
-# Function for emoji handling (this converts emojis into text descriptions)
+# Function for emoji handling 
 def handle_emojis(text):
     return emoji.demojize(text)
 
@@ -19,27 +16,31 @@ def handle_emojis(text):
 def correct_spelling(r):
     return str(TextBlob(r).correct())
 
-# Function for lemmatization and removing stopwords using SpaCy
-def lemmatize_and_remove_stopwords(r):
-    doc = nlp(r)
-    tokens = [
-        token.lemma_ for token in doc 
-        if not token.is_stop and token.is_alpha  # Remove stopwords and non-alphabetic tokens
-    ]
-    result = ' '.join(tokens)
-    return result
+# Function for lemmatization, stemming, and stopword removal
+def lemmatize_and_stem(r):
+    
+    words = word_tokenize(r)
+    
+    stop_words = set(stopwords.words('english'))
+    words = [word for word in words if word not in stop_words]
+    
+    lemmatized_words = [lemmatizer.lemmatize(word) for word in words]
+    stemmed_words = [stemmer.stem(word) for word in words]
+    
+    r = ' '.join(lemmatized_words)  
+    r = ' '.join(stemmed_words)   
+
+    return r
 
 def preprocess_text(r):
     r = str(r).lower().strip()
 
-    # Replacements for currency and percentages
     r = r.replace('%', ' percent')
     r = r.replace('$', ' dollar ')
     r = r.replace('₹', ' rupee ')
     r = r.replace('€', ' euro ')
     r = r.replace('@', ' at ')
 
-    # Number abbreviations (e.g., 1,000,000 becomes 1m)
     r = r.replace(',000,000,000 ', 'b ')
     r = r.replace(',000,000 ', 'm ')
     r = r.replace(',000 ', 'k ')
@@ -47,7 +48,6 @@ def preprocess_text(r):
     r = re.sub(r'([0-9]+)000000', r'\1m', r)
     r = re.sub(r'([0-9]+)000', r'\1k', r)
 
-    # Contractions dictionary for replacement
     contractions = {
         "ain't": "am not", "aren't": "are not", "can't": "can not", "can't've": "can not have", "cause": "because",
         "could've": "could have", "couldn't": "could not", "couldn't've": "could not have", "didn't": "did not",
@@ -78,20 +78,19 @@ def preprocess_text(r):
         "n't": " not", "'re": " are", "'ll": " will"
     }
 
-    # Replacing contractions
     r_decontracted = [contractions.get(word, word) for word in r.split()]
     r = ' '.join(r_decontracted)
 
-    # Removing HTML tags using regex
+    # Removing 
     r = re.sub(r'<.*?>', '', r)
 
     # Correcting spelling
     r = correct_spelling(r)
 
-    # Handling emojis (convert to text)
+    # Handling emojis 
     r = handle_emojis(r)
 
-    # Lemmatization and Stopwords removal using SpaCy
-    r = lemmatize_and_remove_stopwords(r)
+    # Lemmatization and Stemming with Stopwords removal
+    r = lemmatize_and_stem(r)
 
     return r
