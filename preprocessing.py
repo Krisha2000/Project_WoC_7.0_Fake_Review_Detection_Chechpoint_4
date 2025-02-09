@@ -1,20 +1,10 @@
 import re
 import emoji
-import nltk
 from textblob import TextBlob
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer, PorterStemmer
-from nltk.tokenize import word_tokenize
+import spacy
 
-
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-
-
-# Initializing Lemmatizer and Stemmer
-lemmatizer = WordNetLemmatizer()
-stemmer = PorterStemmer()
+# Load the SpaCy English model
+nlp = spacy.load('en_core_web_sm')
 
 # Function for emoji handling (this converts emojis into text descriptions)
 def handle_emojis(text):
@@ -24,20 +14,14 @@ def handle_emojis(text):
 def correct_spelling(r):
     return str(TextBlob(r).correct())
 
-
-def lemmatize_and_stem(r):
-    words = word_tokenize(r)
-    
-    # Removing stopwords
-    stop_words = set(stopwords.words('english'))
-    words = [word for word in words if word.lower() not in stop_words]
-    
-    # Lemmatize and Stem
-    lemmatized_words = [lemmatizer.lemmatize(word) for word in words]
-    stemmed_words = [stemmer.stem(word) for word in lemmatized_words] 
-    
-    result = ' '.join(stemmed_words)
-
+# Function for lemmatization and removing stopwords using SpaCy
+def lemmatize_and_remove_stopwords(r):
+    doc = nlp(r)
+    tokens = [
+        token.lemma_ for token in doc 
+        if not token.is_stop and token.is_alpha  # Remove stopwords and non-alphabetic tokens
+    ]
+    result = ' '.join(tokens)
     return result
 
 def preprocess_text(r):
@@ -102,7 +86,7 @@ def preprocess_text(r):
     # Handling emojis (convert to text)
     r = handle_emojis(r)
 
-    # Lemmatization and Stemming with Stopwords removal
-    r = lemmatize_and_stem(r)
+    # Lemmatization and Stopwords removal using SpaCy
+    r = lemmatize_and_remove_stopwords(r)
 
     return r
