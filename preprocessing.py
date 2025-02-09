@@ -1,12 +1,12 @@
 import re
 import emoji
+import nltk
 from textblob import TextBlob
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.tokenize import word_tokenize
 
 
-import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
