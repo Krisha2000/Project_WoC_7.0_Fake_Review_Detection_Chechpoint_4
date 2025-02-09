@@ -9,7 +9,7 @@ from nltk.tokenize import word_tokenize
 import nltk
 nltk.download('punkt')
 
-# Initialize Lemmatizer and Stemmer
+# Initializing Lemmatizer and Stemmer
 lemmatizer = WordNetLemmatizer()
 stemmer = PorterStemmer()
 
@@ -21,9 +21,8 @@ def handle_emojis(text):
 def correct_spelling(r):
     return str(TextBlob(r).correct())
 
-# Function for lemmatization, stemming, and stopword removal
+
 def lemmatize_and_stem(r):
-    # Tokenize the text into words
     words = word_tokenize(r)
     
     # Remove stopwords
@@ -35,8 +34,8 @@ def lemmatize_and_stem(r):
     stemmed_words = [stemmer.stem(word) for word in words]
     
     # Join them back into a string and update r
-    r = ' '.join(lemmatized_words)  # If you want to return only lemmatized
-    # r = ' '.join(stemmed_words)   # If you want to return only stemmed
+    r = ' '.join(lemmatized_words)  
+     r = ' '.join(stemmed_words)   
 
     return r
 
@@ -89,17 +88,17 @@ def preprocess_text(r):
         "n't": " not", "'re": " are", "'ll": " will"
     }
 
-    # Replace contractions
+    # Replacing contractions
     r_decontracted = [contractions.get(word, word) for word in r.split()]
     r = ' '.join(r_decontracted)
 
-    # Remove HTML tags using regex
+    # Removing HTML tags using regex
     r = re.sub(r'<.*?>', '', r)
 
-    # Correct spelling
+    # Correcting spelling
     r = correct_spelling(r)
 
-    # Handle emojis (convert to text)
+    # Handling emojis (convert to text)
     r = handle_emojis(r)
 
     # Lemmatization and Stemming with Stopwords removal
