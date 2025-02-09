@@ -12,6 +12,7 @@ word2vec_model, mlp_model, svm_model = load_models()
 st.title("🛒 Product Review Fake or Real Classifier")
 
 
+
 # Dropdown menu to select model
 model_choice = st.selectbox(
     "Select a Model for Prediction",
