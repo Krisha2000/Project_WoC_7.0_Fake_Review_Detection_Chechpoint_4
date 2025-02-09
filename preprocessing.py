@@ -35,7 +35,7 @@ def lemmatize_and_stem(r):
     
     # Join them back into a string and update r
     r = ' '.join(lemmatized_words)  
-     r = ' '.join(stemmed_words)   
+    r = ' '.join(stemmed_words)   
 
     return r
 
