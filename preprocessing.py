@@ -8,6 +8,9 @@ from nltk.tokenize import word_tokenize
 
 import nltk
 nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
 
 # Initializing Lemmatizer and Stemmer
 lemmatizer = WordNetLemmatizer()
