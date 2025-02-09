@@ -4,9 +4,15 @@
 
 This project aims to build an interactive website that allows users to input a product URL, scrape reviews, and classify them as "Real" or "Fake" using trained machine learning models. The classification results are displayed in a user-friendly interface, helping users assess the authenticity of product reviews. 
 
-[Uploading screen recording.webm…]()
+## Demo
 
+Here is a demo of the Fake Review Detection app:
 
+## Demo
+
+Here is a demo of the Fake Review Detection app:
+
+[![Watch the demo]([https://www.example.com/path/to/your/thumbnail.png](https://drive.google.com/file/d/1vWGEWrjyAPrqv7BOMdEJoGpW7Ugzk5TU/view?usp=sharing))](https://drive.google.com/file/d/1vWGEWrjyAPrqv7BOMdEJoGpW7Ugzk5TU/view?usp=sharing)
 
 
 
