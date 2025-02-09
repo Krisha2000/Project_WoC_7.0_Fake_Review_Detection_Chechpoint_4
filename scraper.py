@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import pandas as pd
-from langdetect import detect  # Import langdetect for language detection
+from langdetect import detect  
 
 def scrape_reviews(url):
     headers = {
@@ -18,10 +18,9 @@ def scrape_reviews(url):
 
         reviews = []
         for review_block in soup.select('.review'):
-            # Extract the review text
             review_text = review_block.select_one('.review-text').get_text(strip=True) if review_block.select_one('.review-text') else 'N/A'
             
-            # Handle "Read more" scenario, extract full review if applicable
+            # Handliong "Read more" scenario
             if 'Read more' in review_text:
                 full_review = review_block.select_one('.full-review')
                 if full_review:
@@ -32,18 +31,18 @@ def scrape_reviews(url):
             rating_match = re.search(r'\d+\.?\d*', rating_text)
             rating = rating_match.group() if rating_match else 'N/A'
 
-            # Language detection to filter only English reviews
+            # Language detection 
             try:
-                if detect(review_text) == 'en' and review_text != 'N/A':  # Ensure review is in English
+                if detect(review_text) == 'en' and review_text != 'N/A':  
                     reviews.append({
                         "Rating": rating,
                         "Review Text": review_text
                     })
             except Exception as lang_err:
                 print(f"Language detection failed for a review: {lang_err}")
-                continue  # Skip review if language detection fails
+                continue  
 
-        # Return reviews as a DataFrame with only 'Rating' and 'Review Text' columns
+        
         if reviews:
             df = pd.DataFrame(reviews)
             return df
