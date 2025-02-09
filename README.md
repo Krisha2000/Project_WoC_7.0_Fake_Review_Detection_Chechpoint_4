@@ -8,7 +8,7 @@ This project aims to build an interactive website that allows users to input a p
 
 Here is a demo of the Fake Review Detection app:
 
-https://github.com/user-attachments/assets/6b790057-9e9a-48f4-b36c-60ad9d0241c5
+https://github.com/user-attachments/assets/db852426-531c-4144-885e-2498e87dd40e
 
 
 ## Features
