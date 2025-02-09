@@ -2,9 +2,14 @@ import re
 import emoji
 from textblob import TextBlob
 import spacy
+from spacy.cli import download
 
-# Load the SpaCy English model
-nlp = spacy.load('en_core_web_sm')
+try:
+    nlp = spacy.load('en_core_web_sm')
+except OSError:
+    download('en_core_web_sm')
+    nlp = spacy.load('en_core_web_sm')
+
 
 # Function for emoji handling (this converts emojis into text descriptions)
 def handle_emojis(text):
