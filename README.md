@@ -8,12 +8,6 @@ This project aims to build an interactive website that allows users to input a p
 
 Here is a demo of the Fake Review Detection app:
 
-## Demo
-
-Here is a demo of the Fake Review Detection app:
-
-[![Watch the demo]([https://www.example.com/path/to/your/thumbnail.png](https://drive.google.com/file/d/1vWGEWrjyAPrqv7BOMdEJoGpW7Ugzk5TU/view?usp=sharing))](https://drive.google.com/file/d/1vWGEWrjyAPrqv7BOMdEJoGpW7Ugzk5TU/view?usp=sharing)
-
 
 
 ## Features
