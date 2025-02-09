@@ -25,19 +25,17 @@ def correct_spelling(r):
 def lemmatize_and_stem(r):
     words = word_tokenize(r)
     
-    # Remove stopwords
+    # Removing stopwords
     stop_words = set(stopwords.words('english'))
-    words = [word for word in words if word not in stop_words]
+    words = [word for word in words if word.lower() not in stop_words]
     
     # Lemmatize and Stem
     lemmatized_words = [lemmatizer.lemmatize(word) for word in words]
-    stemmed_words = [stemmer.stem(word) for word in words]
+    stemmed_words = [stemmer.stem(word) for word in lemmatized_words] 
     
-    # Join them back into a string and update r
-    r = ' '.join(lemmatized_words)  
-    r = ' '.join(stemmed_words)   
+    result = ' '.join(stemmed_words)
 
-    return r
+    return result
 
 def preprocess_text(r):
     r = str(r).lower().strip()
