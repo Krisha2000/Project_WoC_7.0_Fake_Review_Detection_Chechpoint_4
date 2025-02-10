@@ -14,10 +14,11 @@ https://github.com/user-attachments/assets/db852426-531c-4144-885e-2498e87dd40e
 ## Features
 
 - **Product Review Scraping**: Extracts reviews from the given product URL.
-- **English Reviews Filtering**: The system processes only English-language reviews, as the trained models are optimized for English text.
+- **English Reviews Filtering**: The system processes only **English-language** reviews, as the trained models are optimized for English text.
+- **Review Preprocessing**: Handles emojis and corrects spelling to improve text quality before applying **Word2Vec**.
 - **Machine Learning-Based Classification**: Uses trained **SVM** and **MLP** models to classify reviews.
 - **Model Selection**: Users can select between SVM and MLP models for predictions.
-- **Overall Review Distribution**: Displays a pie chart showing the percentage of real vs. fake reviews.
+- **Overall Review Distribution**: Displays a **pie chart** showing the percentage of real vs. fake reviews.
 - **User-Friendly Interface**: Implemented using **Streamlit** for easy interaction.
 
   
@@ -57,14 +58,20 @@ https://github.com/user-attachments/assets/db852426-531c-4144-885e-2498e87dd40e
 2. **Scraping Reviews**:  
    The system extracts reviews (text & rating) from the given URL.  
    It filters only English-language reviews.
-
-3. **Model Selection**:  
+   
+4. **Processinng Reviews**:  
+   The system preprocesses the reviews, a step completed in Checkpoint 1. Additionally, I have implemented 
+   emoji handling and spelling correction to enhance the quality of the text before converting it into word 
+   vectors using Word2Vec. This ensures that the model receives clean and meaningful input for better 
+   classification.
+   
+6. **Model Selection**:  
    Users can choose between SVM and MLP models for classification.
 
-4. **Review Classification**:  
+7. **Review Classification**:  
    The selected model predicts whether each review is "Real" or "Fake."
 
-5. **Results Display**:  
+8. **Results Display**:  
    - Shows classified reviews along with their labels.
    - Displays a pie chart indicating the percentage of real vs. fake reviews.
 
