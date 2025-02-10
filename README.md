@@ -27,8 +27,9 @@ https://github.com/user-attachments/assets/db852426-531c-4144-885e-2498e87dd40e
     - `scraping.py` - Scrapes reviews (ratings and text) from product URLs on e-commerce platforms (e.g., Amazon).
     - `preprocessing.py` - Processes and prepares review data for prediction.
     - `model.py` - load all pre-trained models like word2vec, SVM and , MLP.
-    - `model_SVM.pkl` - Trained SVM model for fake review detection.
-    - `model_MLP.pkl` - Trained MLP model for fake review detection.
+    - `SVM_model.pkl` - Trained SVM model for fake review detection.
+    - `MLP_model.pkl` - Trained MLP model for fake review detection.
+    - `word2_vec_model.model` - Trained Word2Vec model
     - `README.md` - Project documentation.
 
 
@@ -44,8 +45,8 @@ https://github.com/user-attachments/assets/db852426-531c-4144-885e-2498e87dd40e
   - streamlit
   - BeautifulSoup4
   - requests
-  - langdetect
-  - emoji
+  - langdetect ( to detect English language)
+  - emoji (to convert Emoji to text)
   - plotly (for pie chart visualization)
 
 ## How It Works
@@ -82,9 +83,3 @@ https://github.com/user-attachments/assets/db852426-531c-4144-885e-2498e87dd40e
    Launch the Streamlit app:
    ```bash
    streamlit run app.py
-
-
-
-
-
-   
