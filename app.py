@@ -5,6 +5,14 @@ from preprocessing import preprocess_text
 import pandas as pd
 import plotly.graph_objects as go
 
+import nltk
+
+# Download required NLTK corpora
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+
 # Loading models
 word2vec_model, mlp_model, svm_model = load_models()
 
