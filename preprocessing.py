@@ -5,6 +5,14 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.tokenize import word_tokenize
 
+import nltk
+
+# Download required NLTK corpora
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+
 lemmatizer = WordNetLemmatizer()
 stemmer = PorterStemmer()
 
