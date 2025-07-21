@@ -10,7 +10,4 @@ nltk
 plotly
 beautifulsoup4
 requests
-bs4
 scikit-learn==1.4.1.post1
-plotly
-
